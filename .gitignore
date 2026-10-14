@@ -1,0 +1,16 @@
+# Logs
+logs/
+*.log
+
+# Front
+frontEnd-projet-entree-sortie/node_modules/
+frontEnd-projet-entree-sortie/dist/
+
+# Back
+process_entree_sortie/target/
+
+# IDE
+.vscode/
+
+# Archives
+*.zip
