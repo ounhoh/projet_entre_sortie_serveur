@@ -3,14 +3,14 @@ import { Button } from "../ui/button"
 import type { JSX } from "react"
 
 
-export const getIconEntree= () : JSX.Element => {
-    return (<Button className="bg-green-500" size={"icon"}>
+export const getIconEntree= (onClick?: () => void) : JSX.Element => {
+    return (<Button className="bg-green-500" size={"icon"} onClick={onClick}>
         <UserPlus/>
     </Button>)
 }
 
-export const getIconSortie = () : JSX.Element => {
-    return (<Button className="bg-red-500" size={"icon"}>
+export const getIconSortie = (onClick?: () => void) : JSX.Element => {
+    return (<Button className="bg-red-500" size={"icon"} onClick={onClick}>
         <UserMinus/>
     </Button>)
 }

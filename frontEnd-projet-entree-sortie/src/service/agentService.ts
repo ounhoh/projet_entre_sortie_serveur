@@ -100,7 +100,7 @@ export const agentService = {
     }
     
     // Appel API si pas de cache valide
-    const response = await apiClient.get<AgentDTO[]>('/agents', {
+    const response = await apiClient.get<AgentDTO[]>('/api/agents', {
       params: {
         page,
         size,
@@ -160,19 +160,19 @@ export const agentService = {
 
   // Récupérer un agent par ID
   async getAgentById(id: string): Promise<AgentDTO> {
-    const response = await apiClient.get<AgentDTO>(`/agents/${id}`);
+    const response = await apiClient.get<AgentDTO>(`/api/agents/${id}`);
     return response.data;
   },
 
   // Récupérer un agent par code
   async getAgentByCode(code: string): Promise<AgentDTO> {
-    const response = await apiClient.get<AgentDTO>(`/agents/code/${code}`);
+    const response = await apiClient.get<AgentDTO>(`/api/agents/code/${code}`);
     return response.data;
   },
 
   // Récupérer le matériel et droits d'un agent
   async getAgentMateriel(id: string): Promise<Record<string, any>> {
-    const response = await apiClient.get<Record<string, any>>(`/agents/${id}/materiel`);
+    const response = await apiClient.get<Record<string, any>>(`/api/agents/${id}/materiel`);
     return response.data;
   },
 
@@ -190,7 +190,7 @@ export const agentService = {
 
   // Récupérer uniquement la diffusion de l'agent
   async getAgentDiffusions(id: string): Promise<string[]> {
-    const response = await apiClient.get<string[]>(`/agents/${id}/diffusion`);
+    const response = await apiClient.get<string[]>(`/api/agents/${id}/diffusion`);
     return response.data;
   },
 

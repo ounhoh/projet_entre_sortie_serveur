@@ -9,8 +9,8 @@ import { getBadgeAlerte, getBadgeInfo, getBadgeTache } from "@/components/utils/
 
 
 export type Agent = {
-    nomPrenom:string
-    direction:string
+    nomPrenom:String
+    direction:String
 }
 
 export type Notifications = {

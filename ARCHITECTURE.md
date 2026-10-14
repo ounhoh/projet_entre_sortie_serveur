@@ -12,17 +12,17 @@ L'application remplace le processus actuel par mail/téléphone pour :
 ```
 src/
 ├── components/        # Composants réutilisables (Atomic Design)
-│   ├── contenuPage/         # Contenu des différentes page
-│   ├── Formulaire/         # Représentation du formulaire
-│   ├── iconTypeProcessus/       # différentes icon représentant un processus
+│   ├── contenuPage/         # Contenu des différentes pages
+│   ├── Formulaire/         # Représentation des formulaires
+│   ├── iconTypeProcessus/       # Différentes icônes représentant un processus
 │   ├── Login/         # Page Login
-│   ├── NavBar/         # elements de la NavBar
-│   ├── Recherche/         # element pour la recherche (barre de recherhce,...)
-│   ├── sidebar/         # elements de la sidebard 
-│   ├── tableau/         # tableau des différentes pages
-│   ├── Tache/         # elements des taches (à supprimer car vieille méthode)
+│   ├── NavBar/         # Éléments de la NavBar
+│   ├── Recherche/         # Éléments pour la recherche (barre de recherche,...)
+│   ├── sidebar/         # Éléments de la sidebar 
+│   ├── tableau/         # Tableaux des différentes pages
+│   ├── Tache/         # Éléments des tâches (à supprimer car ancienne méthode)
 │   ├── ui/             # Boutons, inputs (Shadcn)
-│   ├── utils/         # Boutons Retour, badge de statut de tache, niveau notification
+│   ├── utils/         # Boutons Retour, badge de statut de tâche, niveau notification
 ├── service/          # Appels API (axios)
 │   ├── roleService.ts         
 │   ├── tacheService.ts
@@ -30,8 +30,9 @@ src/
 │   ├── templateProcessusService.ts
 │   ├── templateTacheService.ts
 │   ├── directionService.ts
-│   └── agentService.ts
-├── lib/             # élement pour set up axios et tailwind
+│   ├── agentService.ts
+│   └── notificationService.ts
+├── lib/             # Éléments pour configurer axios et tailwind
 ├── hooks/             # Hooks custom
 ├── types/             # Types TypeScript
 └── utils/             # Fonctions utilitaires
@@ -43,11 +44,11 @@ com.cese.entree_sortie/
 ├── domain/           # Cœur métier
 │   ├── model/        # Agent, Process, Task, Notification
 ├── application/      # Cas d'usage
-│   ├── dto/          # modèle  pour transférer les données 
+│   ├── dto/          # Modèle pour transférer les données 
 │   ├── service/      # Logique métier
 │   └── port/         # Interfaces (repositories, services)
 └── infrastructure/   # Adapters
-│   │── config/       # Configuration Spring
+│   ├── config/       # Configuration Spring
 │   ├── persistence/  # JPA repositories
 │   └── web/          # Controllers REST
 ```
@@ -82,7 +83,7 @@ com.cese.entree_sortie/
 ### Base de données : PostgreSQL
 **Pourquoi ?**
 - Relationnel : Données structurées (Agents, Processus, Tâches liées)
-## Modèles de donnnée
+## Modèles de données
 
 Principales entités :
 
@@ -134,8 +135,8 @@ Principales entités :
    - Crée l'entité `Process` avec statut = `Initialisation` (avec les infos du formulaire)
    - Crée l'entité `Agent` avec l'etat = `entrée`  (avec les infos du formulaire)
    - Crée l'entité `AgentDirection` (avec les infos du formulaire)
-   - Génère automatiquement la tâche "Formulaire RH" assignée à DRH et le complète
-   automatiquement par le formulaire remlit précedemment
+   - Génère automatiquement la tâche "Formulaire RH" assignée à DRH et la complète
+   automatiquement par le formulaire rempli précédemment
    - **Change automatiquement** le statut du processus → `Formulaire des droits`
    - Génère le groupe de tâche pour le formulaire de l'agent assignée à la Direction concernée
 
@@ -158,16 +159,16 @@ Principales entités :
 ### Étape 3 : Réalisation des tâches (5 directions)
 10. Chaque direction valide sa tâche au fur et à mesure
 11. À chaque validation → `PUT /api/tasks/{taskId}/complete`
-12. **Backend vérifie** : toutes les groupes de tâches terminés ?
+12. **Backend vérifie** : tous les groupes de tâches terminés ?
     - Non → Processus reste en `Ouverture des droits`
-    - **Oui → Change automatiquement** → `Processus cloturé`
+    - **Oui → Change automatiquement** → `Processus clôturé`
 
 ### Étape 4 : Clôture automatique
 13. Le jour de la date d'arrivée (`dateArrivee`)
 14. **backend** (tâche planifiée) :
     - Vérifie les processus avec `dateArrivee <= aujourd'hui`
-    - Si `dateArrivee <= aujourd'hui` Change le statut de l'agent : `entrée` → `actif` et l'agent apparaît maintenant dans "Liste des agents actifs"
-    - Sinon, on attent que:  `dateArrivee <= aujourd'hui` et on recommence la vérification
+    - Si `dateArrivee <= aujourd'hui`, change le statut de l'agent : `entrée` → `actif` et l'agent apparaît maintenant dans "Liste des agents actifs"
+    - Sinon, attendre que `dateArrivee <= aujourd'hui` et recommencer la vérification
 ---
 
 ### Transitions de statut automatiques (IMPORTANT)
@@ -259,7 +260,7 @@ Principales entités :
 ## Environnements
 
 ### Développement (local)
-- Frontend : `http://localhost:5173` (Vite dev server)
+- Frontend : `http://localhost:5174` (Vite dev server)
 - Backend : `http://localhost:8080` (Spring Boot)
 - Base de données : localhost:5432 (PostgreSQL)
 

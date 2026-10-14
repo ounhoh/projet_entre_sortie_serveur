@@ -25,14 +25,17 @@
 ### Structure de la page
 
 #### Header
-- Titre : "Dashboard
-Vue sur l'ensemble des processus d'entrée/sorties d'un agent"
-- Bouton "Ajouter des Agents" (visible uniquement pour les agents DRH)
-  - Au clic → redirige vers `/process_entree`
+- Titre : "Dashboard - Vue d'ensemble des processus d'entrée/sorties d'un agent"
+- Boutons d'action pour les directions autorisées :
+  - "Ajouter des Agents" (visible uniquement pour DRH)
+  - "Ajouter des Prestataires" (visible pour DAPPI, DSIUN, DAF)
+  - "Ajouter des Conseillers/Attachés" (visible pour DAF, DSIUN)
 
 #### Filtres (au-dessus de la liste)
 - **Type de processus** : Dropdown (Tous / Entrée / Sortie / Mobilité interne)
-- **Recherche** : Input texte (recherche par nom/prénom d'agent, direction, statut)
+- **Recherche** : Barre de texte (recherche par nom/prénom d'agent, direction, statut)
+- **Tri alphabétique** : Toggle A-Z / Z-A (optionnel)
+- **Filtrage par rôle** : Dropdown (Tous / Agents / Conseillers / Prestataires)
 
 #### Liste des processus
 Format : Tableau
@@ -43,8 +46,8 @@ Format : Tableau
 | Agent | Nom + Prénom + Direction | "Dupont Jean / DAPPI" |
 | Type | Badge coloré | 🟢 Entrée / 🔴 Sortie / 🟡 Mobilité |
 | Statut | Badge coloré | "Ouverture des droits" |
-| Date d'Echeance | Date | 15/04/2026 |
-| Date de Mobilisation(arrivée/sortie) |  Date | 15/03/2026 |
+| Date d'Échéance | Date | 15/04/2026 |
+| Date de Mobilisation (arrivée/sortie) | Date | 15/03/2026 |
 
 
 **Interactions** :

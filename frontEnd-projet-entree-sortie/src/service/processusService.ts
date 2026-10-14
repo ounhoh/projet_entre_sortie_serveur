@@ -76,7 +76,7 @@ export type DependanceDTO = {
 export const processusService = {
   // Récupérer tous les processus actifs
   async getProcessusActifs(): Promise<ProcessusDTO[]> {
-    const response = await apiClient.get<ProcessusDTO[]>('/processus/actifs');
+    const response = await apiClient.get<ProcessusDTO[]>('/api/processus/actifs');
     return response.data;
   },
 

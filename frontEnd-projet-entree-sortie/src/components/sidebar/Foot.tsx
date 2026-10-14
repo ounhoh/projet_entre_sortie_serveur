@@ -33,8 +33,8 @@ export function NavUser( {
                   side="right"
                   className="w-[--radix-popper-anchor-width] bg-cese-bleu-secondaire w-fit rounded-lg h-fit"
                 >
-                  <DropdownMenuItem>
-                                <Link to={"/"}>
+                  <DropdownMenuItem className="px-3 py-2.5">
+                                <Link to="/">
                                <span>
                                 Déconnexion
                                 </span>

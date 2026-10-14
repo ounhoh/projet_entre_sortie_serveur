@@ -125,14 +125,14 @@ export function LoginForm({
         <CardHeader>
           <CardTitle className="text-center">Bienvenue</CardTitle>
           <CardDescription className="text-center">
-            Connecter-vous pour continuer
+            Connectez-vous pour continuer
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form>
             <FieldGroup>
               <Field>
-                <FieldLabel htmlFor="email">Adress mail</FieldLabel>
+                <FieldLabel htmlFor="email">Adresse mail</FieldLabel>
                 <Input
                   id="email"
                   type="email"

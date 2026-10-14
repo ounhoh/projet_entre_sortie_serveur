@@ -8,7 +8,9 @@ import { FileText, CheckCircle2, Target } from "lucide-react";
 import { getElement } from "./Element";
 
 
-export function ContenuProcessPage() {
+type ProcessType = "entree" | "sortie";
+
+export function ContenuProcessPage({ type = "entree" }: { type?: ProcessType }) {
     const navigate = useNavigate();
     const location = useLocation();
     const [templatesProcessus, setTemplatesProcessus] = useState<TemplateProcessusDTO[]>([]);
@@ -22,14 +24,12 @@ export function ContenuProcessPage() {
                 setLoading(true);
                 setError(null);
                 
-                // Récupérer les templates d'entrée et de mobilité interne
-                const [templatesEntree, templatesMobilite] = await Promise.all([
-                    templateProcessusService.getTemplatesByType('entree'),
-                    templateProcessusService.getTemplatesByType('mobitliteInterne')
-                ]);
-                
-                // Combiner les deux listes
-                const allTemplates = [...templatesEntree, ...templatesMobilite];
+                const allTemplates = type === "sortie"
+                    ? await templateProcessusService.getTemplatesByType('sortie')
+                    : await Promise.all([
+                        templateProcessusService.getTemplatesByType('entree'),
+                        templateProcessusService.getTemplatesByType('mobitliteInterne')
+                    ]).then(([templatesEntree, templatesMobilite]) => [...templatesEntree, ...templatesMobilite]);
                 setTemplatesProcessus(allTemplates);
             } catch (err) {
                 console.error('Erreur lors du chargement des templates:', err);
@@ -40,7 +40,7 @@ export function ContenuProcessPage() {
         }
         
         fetchTemplates();
-    }, []);
+    }, [type]);
 
     const searchParams = new URLSearchParams(location.search);
     const modePrestataire = searchParams.get('mode') === 'prestataire';
@@ -67,7 +67,9 @@ export function ContenuProcessPage() {
                     <div className="mb-4">
                         <Retour/>
                         <h2 className="text-2xl font-bold">Création de processus</h2>
-                        <p className="text-muted-foreground">Processus d'entrée et mobilité interne</p>
+                        <p className="text-muted-foreground">
+                            {type === "sortie" ? "Processus de sortie" : "Processus d'entrée et mobilité interne"}
+                        </p>
                     </div>
                     
                     {templatesProcessus.length === 0 ? (

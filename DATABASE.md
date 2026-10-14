@@ -1,6 +1,6 @@
-# Base de donnée
+# Base de données
 ## Collecte des données
-Cette étape est la première dans le processus de création d’une base de données avec la méthode Merise. Sa valeur est donc très importante car c’est cette collecte des données qui va être à la base de tout le reste du travail. Ainsi, pour effectuer cette collecte, nous a fallu analyser au maximum toutes les informations qui m’ont été données. Cela se traduit par une lecture pointilleuse de tous les éléments présents sur la maquette et le diagramme de cas d’utilisation ainsi que la description du projet.
+Cette étape est la première dans le processus de création d'une base de données avec la méthode Merise. Sa valeur est donc très importante car c'est cette collecte des données qui va être à la base de tout le reste du travail. Ainsi, pour effectuer cette collecte, nous avons dû analyser au maximum toutes les informations qui nous ont été données. Cela se traduit par une lecture pointilleuse de tous les éléments présents sur la maquette et le diagramme de cas d'utilisation ainsi que la description du projet.
 
 ### Identification des acteurs
 Acteur
@@ -30,13 +30,13 @@ Ensemble de tâche
 statue, nom, date d’échéance, ensemble des tâches, direction
 
 ### Observation et entretien
-informations qu’on note pour chaque information:
-visualisation de l’état du processus tant entrée que sortie et mobilité interne.
-processus passant d’un statut à un autre, entrée et mobilité interne: (initialisation via un formulaire , formulaire de la direction concernée, réalisation des tâches, fin), sortie ( initialisation via un formulaire, réalisation des tâches et fin)
-date d’échéance à respecter
-On identifie un agent selon les éléments qui sont mis dans son formulaire: nom prénom direction, et fonction
-une fois la création ou la mobilité interne de l’agent fait, on  le met dans la liste des agents actifs et qui une fois que l’agent décide de partir, on le met dans la liste des anciens agents
-celui qui commence la procédure est la rh/admin et uniquement pour le cas de sortie
+Informations à noter pour chaque élément :
+- Visualisation de l'état du processus tant entrée que sortie et mobilité interne
+- Processus passant d'un statut à un autre, entrée et mobilité interne: (initialisation via un formulaire, formulaire de la direction concernée, réalisation des tâches, fin), sortie (initialisation via un formulaire, réalisation des tâches et fin)
+- Date d'échéance à respecter
+- Identification d'un agent selon les éléments mis dans son formulaire: nom, prénom, direction et fonction
+- Une fois la création ou la mobilité interne de l'agent effectue, on le met dans la liste des agents actifs et si l'agent décide de partir, on le met dans la liste des anciens agents
+- La personne qui commence la procédure est la RH/ADMIN et uniquement pour le cas de sortie
 ### Fiche de relevé des informations
 Formulaire entrée -RH
 Elément

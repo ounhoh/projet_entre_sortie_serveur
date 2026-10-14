@@ -10,6 +10,8 @@ import { SidebarInset, SidebarProvider } from "./components/ui/sidebar";
 import ProcessusDetailPage from "./components/contenuPage/processus/contenu_process/ProcessusDetailPage";
 import AgentDetailPage from "./components/contenuPage/agent/AgentDetailPage";
 import { ProcessusEditorPage } from "./components/contenuPage/processus/ProcessusEditor";
+import ProcessusActifsPage from "./components/contenuPage/processus/ProcessusActifsPage";
+
 type SidebarProps = { open: boolean; 
     setOpen: React.Dispatch<React.SetStateAction<boolean>>; };
 
@@ -60,15 +62,21 @@ export  function Historique({open , setOpen} : SidebarProps)
 
 
 
-export  function ProcessPage({open , setOpen} : SidebarProps)
+type ProcessPageProps = SidebarProps & { type?: "entree" | "sortie" };
+
+export  function ProcessPage({open , setOpen, type = "entree"} : ProcessPageProps)
 {
+    const isSortie = type === "sortie";
     return (
       <SidebarProvider open={open} onOpenChange={setOpen}>
             <AppSideBar/>
                 <SidebarInset className="flex flex-col min-h-0">
-                <SiteHeader titrePage="Processus d'Entrée et de Mobilité Interne" description="Vue sur l'ensemble des processus d'entrée et de mobilité interne"/>
+                <SiteHeader
+                    titrePage={isSortie ? "Processus de Sortie" : "Processus d'Entrée et de Mobilité Interne"}
+                    description={isSortie ? "Modèles de processus de sortie" : "Vue sur l'ensemble des processus d'entrée et de mobilité interne"}
+                />
                 <div className="flex-1 min-h-0 overflow-auto">
-                    <ContenuProcessPage/>
+                    <ContenuProcessPage type={type}/>
                 </div>
                 </SidebarInset>
         </SidebarProvider>
@@ -132,3 +140,19 @@ export  function ProcessusEditor({open , setOpen} : SidebarProps)
     )
 }
 
+export function ProcessusActifsPageComponent({ open, setOpen }: SidebarProps) {
+    return (
+        <SidebarProvider open={open} onOpenChange={setOpen}>
+            <AppSideBar />
+            <SidebarInset className="flex flex-col min-h-0">
+                <SiteHeader
+                    titrePage="Processus en cours"
+                    description="Sélectionne un processus pour consulter ses tâches"
+                />
+                <div className="flex-1 min-h-0 overflow-auto">
+                    <ProcessusActifsPage />
+                </div>
+            </SidebarInset>
+        </SidebarProvider>
+    );
+}
